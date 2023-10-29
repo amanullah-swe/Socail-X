@@ -35,6 +35,7 @@ app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: '30mb', extended: true }))
 app.use(cors());
 app.use('/assets', express.static(path.join(__dirname, 'public/assets')));
+app.use('/', express.static(path.join(__dirname, 'public/build')));
 
 
 /*FILE STORAGE */
@@ -52,12 +53,12 @@ const upload = multer({ storage });
 
 
 /*ROUTE WITH FILES */
-app.post('/auth/register', upload.single('picture'), register);
-app.post('/posts', verifyToken, upload.single('picture'), createPost);
+app.post('/api/auth/register', upload.single('picture'), register);
+app.post('/api/posts', verifyToken, upload.single('picture'), createPost);
 /*ROUTES */
-app.use('/auth', authRoutes);
-app.use("/users", userRoutes);
-app.use('/posts', postRoutes)
+app.use('/api/auth', authRoutes);
+app.use("/api/users", userRoutes);
+app.use('/api/posts', postRoutes)
 /*MONGOOSE CONNECTION */
 const port = process.env.PORT;
 mongoose.connect(process.env.MONGO_URL)

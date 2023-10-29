@@ -1,12 +1,11 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-
-
+import { baseApiUrl } from 'store/constant';
 
 // Define an asyncThunk using Axios
 export const fetchPostsAsync = createAsyncThunk('post/fetchPostsAsync', async (token, thunkAPI) => {
     try {
-        const response = await axios('http://localhost:3001/posts', {
+        const response = await axios(`${baseApiUrl}/posts`, {
             method: 'get',
             headers: {
                 "Authorization": 'Bearer ' + token
@@ -24,7 +23,7 @@ export const fetchPostsAsync = createAsyncThunk('post/fetchPostsAsync', async (t
 
 export const likeOrDislikePostAsync = createAsyncThunk('post/likeDislikePost', async ({ userId, postId, token }, thunkAPI) => {
     try {
-        const response = await axios(`http://localhost:3001/posts/${userId}/${postId}/like`, {
+        const response = await axios(`${baseApiUrl}/posts/${userId}/${postId}/like`, {
             method: 'patch',
             headers: {
                 "Authorization": 'Bearer ' + token
@@ -43,7 +42,7 @@ export const likeOrDislikePostAsync = createAsyncThunk('post/likeDislikePost', a
 
 export const submitCommentAsync = createAsyncThunk('post/submitCommentAsync', async ({ userId, postId, token, comment }, thunkAPI) => {
     try {
-        const response = await axios(`http://localhost:3001/posts/${userId}/${postId}/comment`, {
+        const response = await axios(`${baseApiUrl}/posts/${userId}/${postId}/comment`, {
             method: 'patch',
             headers: {
                 "Authorization": 'Bearer ' + token
@@ -61,7 +60,7 @@ export const submitCommentAsync = createAsyncThunk('post/submitCommentAsync', as
 
 export const deletePostAsync = createAsyncThunk('post/deletePostAsync', async ({ userId, postId, token }, thunkAPI) => {
     try {
-        const response = await axios(`http://localhost:3001/posts/${userId}/${postId}/delete`, {
+        const response = await axios(`${baseApiUrl}/posts/${userId}/${postId}/delete`, {
             method: 'delete',
             headers: {
                 "Authorization": 'Bearer ' + token
@@ -81,7 +80,7 @@ export const deletePostAsync = createAsyncThunk('post/deletePostAsync', async ({
 export const uploadPostsAsync = createAsyncThunk('post/uploadPostsAsync', async ({ formData, token }, thunkAPI) => {
     console.log(formData);
     try {
-        const response = await axios.post('http://localhost:3001/posts', formData, {
+        const response = await axios.post(`${baseApiUrl}/posts`, formData, {
             headers: {
                 'Authorization': `Bearer ${token}`,
                 'Content-Type': 'multipart/form-data', // Important for FormData

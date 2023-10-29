@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { ErrorMessage, Label1, Wrapper, Container, Form, Input, Label, Button, Link } from './Styled';
 import { setLogin } from "fearures/auth/authSlice";
-
+import { baseApiUrl } from "store/constant";
 const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -18,7 +18,7 @@ const Login = () => {
     validationSchema: loginSchema,
     onSubmit: async () => {
       try {
-        const response = await axios.post('http://localhost:3001/auth/login', values);
+        const response = await axios.post(`${baseApiUrl}/auth/login`, values);
         dispatch(setLogin({ user: response.data.user, token: response.data.token }));
         navigate('/home');
       } catch (error) {

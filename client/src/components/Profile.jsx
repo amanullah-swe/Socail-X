@@ -1,12 +1,13 @@
 import React from 'react'
 import Profileinfo from './Profileinfo';
+import { getImageBaseUrl } from 'utils';
 
 
 function Profile({ firstName, lastName, picturePath, location, occupation, impressions, viewedProfile, personId }) {
     return (
         <div className=' text-text dark:text-dark-text bg-background dark:bg-dark-background shadow-xl h-fit pb-4 p-2 rounded-xl'>
             <div className='flex flex-col items-start justify-start w-full'>
-                <Profileinfo name={firstName + ' ' + lastName} profileImage={`http://localhost:3001/assets/${picturePath}`} text={'100 frends'} personId={personId} />
+                <Profileinfo name={firstName + ' ' + lastName} profileImage={getImageBaseUrl(picturePath)} text={'100 frends'} personId={personId} />
                 <div className='hr-line'></ div>
                 <div className=' flex flex-col  justify-center w-full h-full;'>
                     <div className='flex gap-2'>

@@ -1,10 +1,11 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { baseApiUrl } from 'store/constant';
 // Define an asyncThunk using Axios
 export const addRemoveFreindsAsync = createAsyncThunk('friend/addRemoveFreindsAsync', async ({ userId, personId, token }, thunkAPI) => {
 
     try {
-        const response = await axios(`http://localhost:3001/users/${userId}/${personId}`, {
+        const response = await axios(`${baseApiUrl}/users/${userId}/${personId}`, {
             method: 'patch',
             headers: {
                 "Authorization": 'Bearer ' + token
@@ -20,7 +21,7 @@ export const addRemoveFreindsAsync = createAsyncThunk('friend/addRemoveFreindsAs
 
 export const fetchFriendsAsync = createAsyncThunk('friend/fetchFriendsAsync', async ({ userId, token }, thunkAPI) => {
     try {
-        const response = await axios(`http://localhost:3001/users/${userId}/friends`, {
+        const response = await axios(`${baseApiUrl}/users/${userId}/friends`, {
             method: 'get',
             headers: {
                 "Authorization": 'Bearer ' + token
