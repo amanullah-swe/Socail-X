@@ -1,0 +1,6 @@
+{
+    "html.format.templating": true,
+    "notebook.formatOnSave.enabled": true,
+    "files.autoSave": "off",
+    "importCost.fontStyle": "normal"
+}
