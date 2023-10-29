@@ -15,11 +15,5 @@
             "src": "/api/(.*)",
             "dest": "/index.js"
         }
-    ],
-    "rewrites": [
-        {
-            "source": "/(.*)",
-            "destination": "/"
-        }
     ]
 }
