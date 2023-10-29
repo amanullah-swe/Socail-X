@@ -1,3 +1,3 @@
 export const getImageBaseUrl = function (picturePath) {
-    return `http://localhost:8080/assets/${picturePath}`
+    return `https://socail-x.vercel.app/assets/${picturePath}`
 }
