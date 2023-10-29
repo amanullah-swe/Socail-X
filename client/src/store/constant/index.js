@@ -1,1 +1,1 @@
-export const baseApiUrl = "https://socail-ogackzo2x-amanullah-swe.vercel.app/api";
+export const baseApiUrl = "https://socail-x.vercel.app/api";
