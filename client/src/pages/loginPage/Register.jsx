@@ -3,6 +3,7 @@ import { registerSchema } from "schemas";
 import axios from "axios";
 import { ErrorMessage, WrapperContainer, LabelForfile, Link, Button, Label, Label1, Form, Container, Wrapper, Input } from "./Styled";
 import { useNavigate } from "react-router-dom";
+import { baseApiUrl } from "store/constant";
 
 function Register() {
     const navigate = useNavigate();
@@ -29,7 +30,7 @@ function Register() {
                 formData.append("occupation", values.occupation);
                 formData.append("location", values.location);
                 formData.append("picture", values.picture);
-                const response = await axios.post("http://localhost:3001/auth/register", formData);
+                const response = await axios.post(baseApiUrl + "/auth/register", formData);
                 action.resetForm();
                 navigate('/', { replace: true })
 

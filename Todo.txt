@@ -1,0 +1,3 @@
+1) add links in the nave bar specially in the friends icone
+2)make and when we click on the any user profile and make the friends request to there friends it has give back the friend of the person that click on the button.
+3) make a seprate rout for friends showcase

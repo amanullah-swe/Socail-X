@@ -4,6 +4,7 @@ import { fetchPersonsInfoAsync, fetchPersonsPostsAsync, likeOrDislikePostAsync, 
 const initailState = {
     person: null,
     posts: [],
+    personFriends: [],
     status: "idle"
 
 
@@ -75,6 +76,7 @@ const personSlice = createSlice({
 export const { setFriends } = personSlice.actions;
 export const selectPersonsPost = (state) => state.person.posts;
 export const selectPerson = (state) => state.person.person;
+export const selectPersonFriends = (state) => state.person.personFriends;
 export default personSlice.reducer;
 
 

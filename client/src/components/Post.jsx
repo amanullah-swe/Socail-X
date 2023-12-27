@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Profileinfo from './Profileinfo';
 import { useDispatch, useSelector } from 'react-redux';
+import ImageLazyload from './ImageLazyload';
 
 
 function Post({ name, location, profileImageUrl, postImageUrl, discreption, personId, postId, likes, comments, addRemoveFreinds, deletePost, submitComment, likeOrDislikePost }) {
@@ -9,6 +10,7 @@ function Post({ name, location, profileImageUrl, postImageUrl, discreption, pers
         isClick: false,
         comment: ''
     })
+
 
     const { token, user } = useSelector(state => state.auth);
     const dispatch = useDispatch();
@@ -40,6 +42,7 @@ function Post({ name, location, profileImageUrl, postImageUrl, discreption, pers
         e.preventDefault();
         e.stopPropagation();
         dispatch(likeOrDislikePost({ token, userId: user._id, postId }))
+        console.log(personId);
     }
 
     const handleCommentSubmite = async (e) => {
@@ -57,15 +60,17 @@ function Post({ name, location, profileImageUrl, postImageUrl, discreption, pers
     }
 
     const addOrRemoveFriends = (personId) => {
+        console.log(personId);
         if (!token) return;
         dispatch(addRemoveFreinds({ token, personId, userId: user._id }))
     }
 
     return (
-        <div className=' bg-background dark:bg-dark-background text-inherit shadow-xl rounded-xl my-4 py-4 px-2'>
+        <div className='w-full bg-background dark:bg-dark-background text-inherit shadow-xl rounded-xl my-4 py-4 px-2'>
             {/* profile */}
-            <div className='flex justify-between'>
+            <div className='flex justify-between w-full'>
                 <Profileinfo name={name} profileImage={profileImageUrl} text={location} personId={personId} addOrRemoveFriends={personId !== user._id ? addOrRemoveFriends : null} />
+                {/* add friends button */}
                 {personId === user._id ? <button onClick={handleDeletePost} className='h-8 w-8 bg-secondary dark:bg-dark-secondary flex items-center justify-center rounded-full'>
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -77,11 +82,12 @@ function Post({ name, location, profileImageUrl, postImageUrl, discreption, pers
             </div>
 
 
-            {/* post section */}
+            {/* image section */}
             <div className=''>
                 <p className='font-body text-base mt-2'> {discreption}</p>
-                <div className=' shadow-md overflow-hidden rounded-lg mt-2'>
-                    <img className='w-full' src={postImageUrl} alt='profile' />
+                <div className='w-full overflow-hidden shadow-md rounded-lg mt-2'>
+                    {/* <img src={postImageUrl} alt="post" /> */}
+                    <ImageLazyload src={postImageUrl} alt={"post"} />
                 </div>
             </div>
 

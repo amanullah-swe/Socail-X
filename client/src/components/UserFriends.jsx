@@ -25,11 +25,14 @@ function UserFriends({ token, user }) {
 
 
     const addOrRemoveFriends = (personId) => {
+        // personId: means a person on which profile is click and user is person who clicked
+        console.log(personId)
+        // console.log(user._id);
         if (token) dispatch(addRemoveFreindsAsync({ token, personId, userId: user._id }));
     }
 
     return (
-        <div className=' bg-background dark:bg-dark-background text-inherit shadow-2xl px-2 py-4 rounded-lg flex flex-col gap-5 h-fit'>
+        <div className='w-full min-h-[100px] bg-background dark:bg-dark-background text-inherit shadow-2xl px-2 py-4 rounded-lg flex flex-col gap-5 h-fit'>
             {friends?.map((friend, index) => {
                 return (
                     <Profileinfo

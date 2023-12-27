@@ -10,7 +10,7 @@ function Postslist({ posts }) {
         likeOrDislikePost: likeOrDislikePostAsync
     }
     return (
-        <div className='mt-4 bg-inherit dark:bg-dark-background text-inherit rounded-xl'>
+        <div className='w-full min-h-[500px] mt-4 bg-inherit dark:bg-dark-background text-inherit rounded-xl'>
             {posts.map((post, index) => {
                 return <Post key={index}
                     name={post.firstName + post.lastName}

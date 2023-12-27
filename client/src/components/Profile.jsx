@@ -5,7 +5,7 @@ import { getImageBaseUrl } from 'utils';
 
 function Profile({ firstName, lastName, picturePath, location, occupation, impressions, viewedProfile, personId }) {
     return (
-        <div className=' text-text dark:text-dark-text bg-background dark:bg-dark-background shadow-xl h-fit pb-4 p-2 rounded-xl'>
+        <div className='w-full text-text dark:text-dark-text bg-background dark:bg-dark-background shadow-xl h-fit pb-4 p-2 rounded-xl'>
             <div className='flex flex-col items-start justify-start w-full'>
                 <Profileinfo name={firstName + ' ' + lastName} profileImage={getImageBaseUrl(picturePath)} text={'100 frends'} personId={personId} />
                 <div className='hr-line'></ div>

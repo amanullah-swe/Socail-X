@@ -1,6 +1,7 @@
 import React, { memo, useCallback } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom';
+import ImageLazyload from './ImageLazyload';
 
 function Profileinfo({ profileImage, name, text, personId, addOrRemoveFriends }) {
     const dispatch = useDispatch();
@@ -19,7 +20,8 @@ function Profileinfo({ profileImage, name, text, personId, addOrRemoveFriends })
         <div className='w-full flex justify-between items-center'>
             <div className='flex gap-3 items-center'>
                 <div className='w-16 h-16 rounded-full overflow-hidden' onClick={goToUserProfile}>
-                    <img src={profileImage} className='profile-image' alt="" />
+                    {/* <img src={profileImage} className='profile-image' alt="" /> */}
+                    <ImageLazyload src={profileImage} alt={'image'} />
                 </div>
                 <div >
                     <h3 className=' font-heading text-lg' onClick={goToUserProfile}>{name}</h3>

@@ -1,0 +1,29 @@
+#mobile-nave-links {
+    transition: top 1.5s ease-in-out 0ms;
+    z-index: 40;
+    position: absolute;
+
+    @media screen and (min-width: 640px) {
+        top: -150px;
+    }
+}
+
+.show {
+    top: 64px;
+}
+
+.hide {
+    top: -150px;
+}
+
+.link-hover {
+    transition: scale 200ms ease-in 50ms, padding-left 200ms ease-in 50ms, opacity 200ms ease-in 50ms;
+}
+
+
+.link-hover:hover {
+    padding-left: 10px;
+    scale: 1.05;
+    cursor: pointer;
+    opacity: 0.8;
+}

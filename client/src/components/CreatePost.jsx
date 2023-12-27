@@ -13,7 +13,7 @@ function CreatePost() {
         console.log('showS');
     }
     return (
-        <div className='flex flex-col gap-3 text-text dark:text-dark-text bg-background dark:bg-dark-background shadow-xl h-fit pb-4 p-3 rounded-xl'>
+        <div className=' w-full flex flex-col gap-3 text-text dark:text-dark-text bg-background dark:bg-dark-background shadow-xl h-fit pb-4 p-3 rounded-xl'>
             {uploadSections ? <Uploadfiles /> : null}
 
             {/* input box */}

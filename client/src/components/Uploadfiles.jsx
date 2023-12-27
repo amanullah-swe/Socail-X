@@ -44,7 +44,7 @@ function Uploadfiles() {
 
     }
     return (
-        <div className=' bg-inherit h-screen relative top-0 shadow-lgar rounded-xl overflow-hidden mb-2'>
+        <div className=' w-full bg-inherit h-screen relative top-0 shadow-lgar rounded-xl overflow-hidden mb-2'>
             <form onSubmit={handleOnSubmit} className=' flex flex-col'>
 
                 <button className='px-4 py-2  w-fit rounded-xl mb-4 bg-primary' type='button' onClick={handleOnClick}>x</button>

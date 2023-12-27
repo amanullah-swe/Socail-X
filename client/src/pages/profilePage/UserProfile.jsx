@@ -7,7 +7,7 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
 import UserFriends from 'components/UserFriends';
-import { selectPerson, selectPersonsPost } from 'fearures/person/personSlice';
+import { selectPerson, selectPersonFriends, selectPersonsPost } from 'fearures/person/personSlice';
 import { fetchPersonsInfoAsync, fetchPersonsPostsAsync, likeOrDislikePostAsync, submitCommentAsync } from 'fearures/person/personApi';
 import { deletePostAsync } from 'fearures/post/postApi';
 import { addRemoveFreindsAsync } from 'fearures/friends/friendApi';
@@ -19,8 +19,10 @@ function UserProfile() {
     const { token } = useSelector(state => state.auth);
     const dispatch = useDispatch();
     const { personId } = useParams();
-    const person = useSelector(selectPerson);
+    const user = useSelector(selectPerson);
     const posts = useSelector(selectPersonsPost)
+    const friends = useSelector(selectPersonFriends)
+
 
 
     useEffect(() => {
@@ -41,16 +43,16 @@ function UserProfile() {
                 <Nav />
             </section>
 
-            {person ? <Layout >
+            {user ? <Layout >
                 <Profile
-                    firstName={person.firstName}
-                    lastName={person.lastName}
-                    picturePath={person.picturePath}
-                    location={person.location}
-                    occupation={person.occupation}
-                    impressions={person.impressions}
-                    viewedProfile={person.viewedProfile}
-                    userId={person.id}
+                    firstName={user.firstName}
+                    lastName={user.lastName}
+                    picturePath={user.picturePath}
+                    location={user.location}
+                    occupation={user.occupation}
+                    impressions={user.impressions}
+                    viewedProfile={user.viewedProfile}
+                    userId={user.id}
                 />
 
                 {/* person post list */}
@@ -70,7 +72,8 @@ function UserProfile() {
                         />
                     })}
                 </div>
-                <UserFriends token={token} user={person} />
+                {/* to make sure the strudtur of the the component  so we need to pass the use object so we convert person id to user object and then pass */}
+                <UserFriends token={token} user={{ _id: personId }} />
             </Layout>
                 : <p>somethin wrong</p>
             }

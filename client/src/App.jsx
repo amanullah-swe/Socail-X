@@ -5,6 +5,12 @@ import Login from './pages/loginPage/Login.jsx';
 import UserProfile from 'pages/profilePage/UserProfile.jsx';
 import { useSelector } from 'react-redux';
 import Register from './pages/loginPage/Register.jsx'
+
+// const Home = lazy(() => import('./pages/homePage/Home.jsx'));
+// const Login = lazy(() => import('./pages/loginPage/Login.jsx'));
+// const UserProfile = lazy(() => import('pages/profilePage/UserProfile.jsx'));
+// const Register = lazy(() => import('./pages/loginPage/Register.jsx'));
+
 function App() {
   const { mode, token, user } = useSelector((state) => state.auth);
   console.log('app');
