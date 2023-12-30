@@ -18,10 +18,11 @@ function App() {
     <div className="App bg-[#edeeed] dark:bg-[#111211] text-text dark:text-dark-text" >
       <BrowserRouter>
         <Routes>
-          <Route path='/register' element={<Register />} />
+          <Route path='/sign-up' element={<Register />} />
           <Route path='/home' element={token ? <Home /> : <Navigate to={'/'} />} />
           <Route path='/profile/:personId' element={token ? <UserProfile /> : <Navigate to={'/'} />} />
-          <Route path='*' element={<Login />} />
+          <Route path='/' element={<Login />} />
+          <Route path='*' element={<>404</>} />
         </Routes>
       </BrowserRouter>
     </div>

@@ -28,15 +28,35 @@ const __dirname = path.dirname(__filename);
 dotenv.config();
 const app = express();
 app.use(express.json());
-app.use(helmet());
-app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
+// app.use(helmet());
+app.use(
+    helmet.contentSecurityPolicy({
+        directives: {
+            imgSrc: ["'self'", 'blob:', 'data:'],
+            // Add other directives as needed
+        },
+    })
+);
+
 app.use(morgan('common'));
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: '30mb', extended: true }))
 app.use(cors());
+// Serve static assets
 app.use('/assets', express.static(path.join(__dirname, 'public/assets')));
-app.use('/', express.static(path.join(__dirname, 'public/build')));
 
+// Serve the React application
+app.use('/', express.static(path.join(__dirname, 'public/build')));
+// we assume that every backend route start with the /api/ and other than is for frontend 
+// and we handle the 404 on the frontend
+app.get('*', (req, res, next) => {
+    if (req.path.includes('/api')) {
+        next();
+    } else {
+        res.sendFile(path.join(__dirname, 'public/build', 'index.html'));
+    }
+
+});
 
 /*FILE STORAGE */
 const storage = multer.diskStorage({
@@ -59,6 +79,11 @@ app.post('/api/posts', verifyToken, upload.single('picture'), createPost);
 app.use('/api/auth', authRoutes);
 app.use("/api/users", userRoutes);
 app.use('/api/posts', postRoutes)
+
+// Handle all other routes by serving the main HTML file
+// app.get('*', (req, res) => {
+//     res.sendFile(path.join(__dirname, 'public/build', 'index.html'));
+// });
 /*MONGOOSE CONNECTION */
 const port = process.env.PORT;
 mongoose.connect(process.env.MONGO_URL)

@@ -1,4 +1,3 @@
-import { Input, Wrapper, Label1 } from 'pages/loginPage/Styled';
 import React from 'react';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -50,7 +49,7 @@ function Uploadfiles() {
                 <button className='px-4 py-2  w-fit rounded-xl mb-4 bg-primary' type='button' onClick={handleOnClick}>x</button>
 
                 <div className=''>
-                    <Input
+                    <input
                         placeholder='Whats in your mind'
                         value={text}
                         className='text-base font-body text-inherit'

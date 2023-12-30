@@ -1,3 +1,9 @@
 1) add links in the nave bar specially in the friends icone
-2)make and when we click on the any user profile and make the friends request to there friends it has give back the friend of the person that click on the button.
 3) make a seprate rout for friends showcase
+4) algotithm to sugeest the new friends for the user 
+5) fix the post add friend icon on the userProfile page.
+6) add hover animation and fix the front end typography and color themes 
+7) add a stylish logo( replace the text base logo with the stylish logo)
+8) post like button animation and comment section redesign
+9) theme set
+10) allow user to edit the profile/personal information
