@@ -2,6 +2,7 @@ import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import Uploadfiles from './Uploadfiles.jsx';
 import { setUpoadSections } from 'fearures/auth/authSlice.js';
+import { baseImageUrl } from 'store/constant/index.js';
 function CreatePost() {
     const { picturePath } = useSelector(state => state.auth.user);
     const { uploadSections } = useSelector(state => state.auth);
@@ -19,7 +20,7 @@ function CreatePost() {
             {/* input box */}
             <div className='flex flex-row w-full justify-center items-center gap-2'>
                 <div className='w-16 h-16 rounded-full overflow-hidden'>
-                    <img src={`http://localhost:3001/assets/${picturePath}`} className='profile-image' alt="" />
+                    <img src={baseImageUrl + picturePath} className='profile-image' alt="" />
                 </div>
                 <div className='w-[80%] border-5 px-2 py-1 bg-inherit '>
                     <input type="text "

@@ -1,10 +1,10 @@
-import React, { memo, useEffect } from 'react'
+import { memo, useEffect } from 'react'
 import Profileinfo from './Profileinfo';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { addRemoveFreindsAsync, fetchFriendsAsync } from 'fearures/friends/friendApi';
 import { selectFriends } from 'fearures/friends/friendsSlice';
-import { getImageBaseUrl } from 'utils';
+import { baseImageUrl } from 'store/constant';
 
 
 
@@ -37,7 +37,7 @@ function UserFriends({ token, user }) {
                 return (
                     <Profileinfo
                         key={index}
-                        profileImage={getImageBaseUrl(friend.picturePath)}
+                        profileImage={baseImageUrl + friend.picturePath}
                         name={`${friend.firstName} ${friend.lastName}`}
                         text={friend.location}
                         personId={friend._id}

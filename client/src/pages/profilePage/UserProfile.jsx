@@ -1,10 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import Layout from 'components/Layout'
 import Nav from 'pages/navbar/Nav'
 import Profile from 'components/Profile';
-import Postslist from 'pages/homePage/Postslist';
 import { useParams } from 'react-router-dom';
-import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
 import UserFriends from 'components/UserFriends';
 import { selectPerson, selectPersonFriends, selectPersonsPost } from 'fearures/person/personSlice';
@@ -12,7 +10,7 @@ import { fetchPersonsInfoAsync, fetchPersonsPostsAsync, likeOrDislikePostAsync, 
 import { deletePostAsync } from 'fearures/post/postApi';
 import { addRemoveFreindsAsync } from 'fearures/friends/friendApi';
 import Post from 'components/Post';
-import { getImageBaseUrl } from 'utils';
+import { baseImageUrl } from 'store/constant';
 
 
 function UserProfile() {
@@ -61,8 +59,8 @@ function UserProfile() {
                         return <Post key={index}
                             name={post.firstName + post.lastName}
                             location={post.location}
-                            profileImageUrl={getImageBaseUrl(post.userPicturePath)}
-                            postImageUrl={getImageBaseUrl(post.picturePath)}
+                            profileImageUrl={baseImageUrl + post.userPicturePath}
+                            postImageUrl={baseImageUrl + post.picturePath}
                             discreption={post.description}
                             personId={post.userId}
                             postId={post._id}

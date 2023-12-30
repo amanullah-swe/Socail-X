@@ -1,7 +1,7 @@
 import Post from 'components/Post';
 import { addRemoveFreindsAsync } from 'fearures/friends/friendApi';
 import { deletePostAsync, likeOrDislikePostAsync, submitCommentAsync } from 'fearures/post/postApi';
-import { getImageBaseUrl } from 'utils';
+import { baseImageUrl } from 'store/constant';
 function Postslist({ posts }) {
     const postFunctions = {
         addRemoveFreinds: addRemoveFreindsAsync,
@@ -15,8 +15,8 @@ function Postslist({ posts }) {
                 return <Post key={index}
                     name={post.firstName + post.lastName}
                     location={post.location}
-                    profileImageUrl={getImageBaseUrl(post.userPicturePath)}
-                    postImageUrl={getImageBaseUrl(post.picturePath)}
+                    profileImageUrl={baseImageUrl + post.userPicturePath}
+                    postImageUrl={baseImageUrl + post.picturePath}
                     discreption={post.description}
                     personId={post.userId}
                     postId={post._id}
