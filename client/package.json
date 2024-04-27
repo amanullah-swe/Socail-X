@@ -1,6 +1,7 @@
 {
   "name": "client",
   "version": "0.1.0",
+  "proxy": "http://localhost:3001",
   "private": true,
   "dependencies": {
     "@fortawesome/free-regular-svg-icons": "^6.4.0",
@@ -29,6 +30,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "format": "prettier --write \"src/**/*.{js,jsx}\"",
     "build-and-copy": "react-scripts build && rm -rf ../server/public/build && cp -r build ../server/public"
   },
   "eslintConfig": {
@@ -52,6 +54,7 @@
   "devDependencies": {
     "autoprefixer": "^10.4.16",
     "postcss": "^8.4.31",
+    "prettier": "3.1.1",
     "tailwindcss": "^3.3.3"
   }
 }
